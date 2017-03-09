@@ -1,0 +1,191 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .clearfix::after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .layout {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 300px;
+            text-align: center;
+            font-size: 0;
+            min-width: 700px;
+        }
+        /*.layout::before {
+            content: ' ';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            visibility: hidden;
+        }*/
+        
+        ul {
+            text-align: center;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ccc;
+            display: block;
+            width: 300px;
+            height: 100%;
+            padding: 40px;
+            font-size: 16px;
+        }
+        
+        #source {
+            margin-left: -100%;
+        }
+        
+        #resort {
+            margin-left: -300px;
+        }
+        
+        .middle {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .main {
+            margin-left: 320px;
+            margin-right: 320px;
+            height: 100%;
+            position: relative;
+        }
+        
+        #sort-btn {
+            border: none;
+            outline: none;
+            border-radius: 3px;
+            background: #2196f3;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            line-height: 2;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout clearfix">
+
+        <div class="middle fl">
+            <div class="main">
+                <button id="sort-btn">排序</button>
+            </div>
+        </div>
+
+        <ul id="source" class="fl">
+            <li>北京空气质量：<b>90</b></li>
+            <li>上海空气质量：<b>70</b></li>
+            <li>天津空气质量：<b>80</b></li>
+            <li>广州空气质量：<b>50</b></li>
+            <li>深圳空气质量：<b>40</b></li>
+            <li>福州空气质量：<b>32</b></li>
+            <li>成都空气质量：<b>90</b></li>
+        </ul>
+
+
+        <ul id="resort" class="fl">
+            <!-- 
+    <li>第一名：北京空气质量：<b>90</b></li>
+    <li>第二名：北京空气质量：<b>90</b></li>
+    <li>第三名：北京空气质量：<b>90</b></li>
+     -->
+
+        </ul>
+
+
+    </div>
+
+
+    <script type="text/javascript">
+        (function () {
+            /**
+             * getData方法
+             * 读取id为source的列表，获取其中城市名字及城市对应的空气质量
+             * 返回一个数组，格式见函数中示例
+             */
+
+            //本来想把函数写的更抽象的一些，发现这个情况下貌似都很“反抽象”啊...只能面向具体字符串情况编写了。
+            function getData() {
+                var container = document.querySelectorAll('#source>li');
+                var tempArr = [].slice.call(container).map(ele => {
+                    var temp = ele.innerText.split('：');
+                    temp[0] = temp[0].slice(0, temp[0].indexOf('空气质量'));
+                    return temp;
+                }).sort((a, b) => (b[1] - 0) - (a[1] - 0));
+
+                return tempArr;
+            }
+
+            /**
+             * sortAqiData
+             * 按空气质量对data进行从小到大的排序
+             * 返回一个排序后的数组
+             */
+            function sortAqiData(data) {
+                return data.sort((a, b) => (b[1] - 0) - (a[1] - 0));
+            }
+
+            /**
+             * render
+             * 将排好序的城市及空气质量指数，输出显示到id位resort的列表中
+             * 格式见ul中的注释的部分
+             */
+
+            function render(data) {
+                console.log(data);
+                var placeHolder = document.getElementById('resort');
+                placeHolder.innerHTML = data.map(singleData =>
+                    `<li>${singleData[0]}空气质量：<b>${singleData[1]}</b></li>`).join('');
+            }
+
+            function btnHandle() {
+                var aqiData = getData();
+                aqiData = sortAqiData(aqiData);
+                render(aqiData);
+            }
+
+            function init() {
+                var btn = document.getElementById('sort-btn');
+                // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
+                btn.addEventListener('click', btnHandle);
+            }
+
+            init();
+        })();
+    </script>
+</body>
+
+</html>
