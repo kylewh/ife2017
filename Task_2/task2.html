@@ -163,51 +163,44 @@
             </header>
 
             <form action="">
-
-                <div>
-                    <label class="please" for="email">请输入邮箱地址：</label>
-                    <input class="act" type="email" name="emailsr" id="email" placeholder="这是一个文本输入框" /><br />
-                    <div class="tips">邮箱地址请按要求格式输入</div>
-                </div>
-
-                <div>
-                    <label class="please" for="pw1">请输入密码：</label>
-                    <input class="act" type="password" name="psw1" id="pw1" value="12345678" placeholder="这是一个文本输入框" //>
-                </div>
-
-                <div>
-                    <label class="please" for="pw2">请重复输入密码：</label>
-                    <input class="act" type="password" name="psw2" id="pw2" value="12345678" placeholder="这是一个文本输入框" //>
-                    <div class="tips">密码请为6-16位英文数字</div>
-                </div>
-
-                <div>
-                    <label class="please">性别：</label>
-                    <input class="act" type="radio" checked="checked" name="sex" id="man" value="male" /><label for="man">男</label>
-                    <input type="radio" name="sex" id="woman" value="female" /><label for="woman">女</label>
-                </div>
-
-                <div>
-                    <label class="please">城市：</label>
-                    <select class="right" name="city">
-                    <option value="beijing">北京</option>
-                    <option value="shanghai">上海</option>
-                    <option value="guangzhou">广州</option>
-                    <option value="shenzhen">深圳</option>
-                </select>
-                </div>
-
-                <div>
-                    <label class="please">爱好：</label>
-                    <input class="act" type="checkbox" name="checkbox1" id="cb1" value="sport" /><label for="cb1">运动</label>
-                    <input type="checkbox" name="checkbox2" id="cb2" value="art" /><label for="cb2">艺术</label>
-                    <input type="checkbox" name="checkbox3" id="cb3" value="scienece" /><label for="cb3">科学</label>
-                </div>
-
-                <div>
-                    <label class="please" for="tarea">个人描述：</label>
-                    <textarea class="act" name="msg" id="tarea" rows="8" cols="30">这是一个多行输入框，输入您的个人描述</textarea>
-                </div>
+                <ul class="form-list">
+                    <li class="mail">
+                        <label class="please" for="email">请输入邮箱地址：</label>
+                        <input class="act" type="email" name="emailsr" id="email" placeholder="这是一个文本输入框">
+                    </li>
+                    <li>
+                        <label class="please" for="pw1">请输入密码：</label>
+                        <input class="act" type="password" name="psw1" id="pw1" value="12345678" placeholder="这是一个文本输入框">
+                    </li>
+                    <li class="pasw">
+                        <label class="please" for="pw2">请重复输入密码：</label>
+                        <input class="act" type="password" name="psw2" id="pw2" value="12345678" placeholder="这是一个文本输入框">
+                    </li>
+                    <li>
+                        <label class="please">性别：</label>
+                        <input class="act" type="radio" checked="checked" name="sex" id="man" value="male" /><label for="man">男</label>
+                        <input type="radio" name="sex" id="woman" value="female" /><label for="woman">女</label>
+                    </li>
+                    <li>
+                        <label class="please">城市：</label>
+                        <select class="right" name="city">
+                            <option value="beijing">北京</option>
+                            <option value="shanghai">上海</option>
+                            <option value="guangzhou">广州</option>
+                            <option value="shenzhen">深圳</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label class="please">爱好：</label>
+                        <input class="act" type="checkbox" name="checkbox1" id="cb1" value="sport" /><label for="cb1">运动</label>
+                        <input type="checkbox" name="checkbox2" id="cb2" value="art" /><label for="cb2">艺术</label>
+                        <input type="checkbox" name="checkbox3" id="cb3" value="scienece" /><label for="cb3">科学</label>
+                    </li>
+                    <li>
+                        <label class="please" for="tarea">个人描述：</label>
+                        <textarea class="act" name="msg" id="tarea" rows="8" cols="30">这是一个多行输入框，输入您的个人描述</textarea>
+                    </li>
+                </ul>
                 <input type="submit" value="确认提交" / id="button">
 
             </form>

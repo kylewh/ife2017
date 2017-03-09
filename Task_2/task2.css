@@ -16,8 +16,6 @@ body {
 	margin: 15px 40px;
 	height: 50px;
 	width: 50px;
-	bodrer-style: solid;
-	border-width: 3px;
 	border-radius: 50%;
 }
 
@@ -41,7 +39,6 @@ body {
 	color: #FFCC00;
 }
 
-.author_time,
 h2,
 h3 {
 	line-height: 2em;
@@ -51,6 +48,10 @@ h3 {
 .author_time,
 h3 {
 	color: #808080;
+}
+
+.author_time {
+	line-height: 3em;
 }
 
 .passage {
@@ -73,10 +74,7 @@ aside {
 	background-color: #FFF;
 	margin: 20px;
 	padding: 30px;
-	border-left: 1px solid #C0C0C0;
-	border-top: 1px solid #C0C0C0;
-	border-right: 3px inset #808080;
-	border-bottom: 3px inset #808080;
+	box-shadow: 1px 1px 1px #424242;
 }
 
 section {
@@ -93,7 +91,7 @@ figure {
 }
 
 figure figcaption {
-	font-size: 10px;
+	font-size: 12px;
 	line-height: 20px;
 	font-family: "sans-serif";
 }
@@ -122,7 +120,7 @@ table thead {
 table th,
 table td {
 	padding: 3px;
-	font-size: 13px;
+	font-size: 14px;
 	border: 1px solid #ccc;
 }
 
@@ -141,50 +139,62 @@ aside form {
 	display: block;
 }
 
-aside form div {
+aside .form-list {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
 
-aside form .please {
+aside .form-list  li.mail::after {
+	content: '邮箱地址请按要求格式输入';
+}
+
+aside .form-list  li.pasw::after {
+	content: '密码请为6-16位英文数字';
+}
+
+aside .form-list  li.mail::after,
+aside .form-list  li.pasw::after {
+	display: block;
+	margin-left: 40%;
+	font-size: 12px;
+	color: #ccc;
+	padding-left: 14px;
+}
+
+aside .form-list  .please {
 	text-align: right;
 	display: inline-block;
 	width: 40%;
 }
 
-aside form .tips {
-	font-size: 10px;
-	margin-left: calc(40% + 3px);
-	color: #cccccc;
-}
-
-aside form input[type="email"],
-aside form input[type="password"],
-aside form textarea,
-aside form select {
+aside .form-list  input[type="email"],
+aside .form-list  input[type="password"],
+aside .form-list  textarea,
+aside .form-list  select {
 	padding: 3px;
 }
 
-aside form label {
+aside .form-list  label {
 	font-size: 10px;
 	margin-right: 3px;
 	margin-left: 5px;
 }
 
-aside form textarea {
+aside .form-list  textarea {
 	width: 50%;
 	vertical-align: text-top;
 	margin-bottom: 5px;
 }
 
-#button {
+aside form input[type="submit"] {
 	width: 100%;
 	font-size: 20px;
-	background-color: #3048D8;
-	border: 1px solid #3048D8;
+	background-color: #2196f3;
+	border: 1px solid #2196f3;
 	border-radius: 5px;
-	color: #F0F0F0;
+	color: #fff;
 	padding: 10px 0px;
+	cursor: pointer;
 }
 
 footer {
