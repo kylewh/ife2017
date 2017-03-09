@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>IFE JavaScript Task 01</title>
+    </head>
+
+    <body>
+
+        <h3>污染城市列表</h3>
+        <ul id="aqi-list">
+            <!--   
+            <li>第一名：福州（样例），10</li>
+            <li>第二名：福州（样例），10</li> 
+            -->
+        </ul>
+
+        <script type="text/javascript">
+            var aqiData = [
+                ["北京", 90],
+                ["上海", 50],
+                ["福州", 10],
+                ["广州", 50],
+                ["成都", 90],
+                ["西安", 100]
+            ];
+
+            (function () {
+                /*
+                在注释下方编写代码
+                遍历读取aqiData中各个城市的数据
+                将空气质量指数大于60的城市显示到aqi-list的列表中
+                */
+
+                const ulist = document.getElementById('aqi-list');
+
+                var sortedData = aqiData.sort((a, b) => b[1] - a[1]) //排序依据：空气指数
+                    .filter(singleData => singleData[1] >= 60)  //过滤掉空气指数60以下的数据
+                    .map(function templateMaker(singleData, idx) { //构造字符模板，返回包装好的单个数据
+                        var rank;
+                        var aRank = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+                        if (idx < 10) {
+                            rank = aRank[idx]
+                            console.log(idx);
+                        } else if (idx >= 10) {
+                            //...数字转汉字的逻辑暂时不做...一脸懵逼 - - ！
+                        }
+                        return `<li>第${rank}名：${singleData[0]}，${singleData[1]}</li>`;
+                    })
+                    .join(''); //将所有包装好的数据合并
+                    ulist.innerHTML = sortedData;
+            })();
+        </script>
+    </body>
+
+    </html>
+</body>
+
+</html>
