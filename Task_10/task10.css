@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 20px;
+}
+
+/** 为了兼容safari浏览器使用最老版本flexbox(-webkit-)，对于IE浏览器则使用混合版本(-ms-)，其他使用最新版。**/
+.flex, .flex>div{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.flex{
+    border: 1px solid gray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.box{
+    border: 1px solid #f00;
+    width: 150px;
+    padding: 0;
+    margin-bottom: 10px;
+
+}
+.item1{
+    height: 120px;
+}
+.item2{
+    height: 100px;
+}
+.item3{
+    height: 40px;
+}
+.item4{
+    height:200px;
+    border-color: blue !important;
+}
+@media all and (max-width: 640px) {
+    .item4{
+        -webkit-box-ordinal-group: -1;
+        -ms-flex-order: -1;
+        order: -1;
+    }
+    .flex{
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+}

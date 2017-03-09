@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body {
+          color: #fff;
+          font: 600 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+        }
+        .clearfix:after{
+            content: ".";
+        	display: block;
+        	height: 0;
+        	clear: both;
+        	visibility: hidden;
+        }
+        .test_box{
+            width:80%;
+            margin:25px auto;
+            background: #ffebe6;
+            position: relative;
+            height: 450px;
+        }
+
+        input.test_radio{
+            display: none;
+        }
+        label.test_label{
+            cursor: pointer;
+            margin-right:10px;
+            border-width: 0px;
+            border-radius: 6px;
+            background-color: #21c155;
+            display: inline-block;
+            float: left;
+            width:20%;
+            height:50px;
+            line-height: 50px;
+            color: white;
+            text-align: center;
+
+        }
+        input:checked~label.test_label{
+            background-color: #ff6642;
+            box-shadow: 1px 1px 5px #42deff;
+        }
+        input:checked~.test_content{
+            display: block;
+            position: absolute;
+            top:80px;
+
+        }
+        .test_content{
+            color: #545454;
+            background:#ffd259;
+            display: none;
+            width: 99.9%;
+            margin: 0 auto;
+            font-size: 60px;
+            line-height: 300px;
+            text-align: center;
+            border: 1px dotted #fff;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="test_box clearfix ">
+        <div class="tab_background">
+            <div class="test-tab">
+                <input type="radio" class="test_radio" name="test_radio" id="tab1" checked="chekced">
+                <label for="tab1" class="test_label">Stuff</label>
+                <div class="test_content"><p>This is your first page.</p></div>
+            </div>
+            <div class="test_tab">
+                <input type="radio" class="test_radio" name="test_radio" id="tab2" chekced>
+                <label for="tab2" class="test_label">Stuff</label>
+                <div class="test_content"><p>This is your second page.</p></div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
