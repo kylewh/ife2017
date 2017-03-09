@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .clearfix::after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .container {
+            margin: 20px;
+            padding: 20px 160px 20px 240px;
+        }
+        
+        .container,
+        .team-intro,
+        .team-member,
+        .main {
+            background: #eee;
+            border: 1px solid #999;
+        }
+
+        .team-intro,
+        .team-member,
+        .main {
+            padding: 20px;
+        }
+        
+        .main {
+            width: 100%;
+        }
+
+        
+        .team-intro {
+            width: 200px;
+            position: relative;
+            margin-left: -100%;
+            left: -220px;
+        }
+        
+        .team-intro img {
+            width: 80px;
+            margin-right: 20px;
+        }
+        
+        .team-intro h5 {
+            margin: 0;
+        }
+        
+        .team-member {
+            width: 122px;
+            margin-left: -122px;
+            right: -144px;
+            position: relative;
+        }
+        
+        .team-member li {
+            margin-bottom: 20px;
+            height: 80px;
+        }
+        
+        .team-member li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .team-member li img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="main fl">
+            <header>
+                <h3>团队介绍</h3>
+            </header>
+            <p>这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...</p>
+            <ul>
+                <li>圣杯布局的缺陷：</li>
+                <li>中间内容区的width:100%, 所以与父容器宽度一致，父容器设定了padding使其内容区宽度等于中间内容区宽度</li>
+                <li>而第二个aside使用了负左边距100%，此时参照物为父容器</li>
+                <li>当页面的宽度被调整至父容器的内容区（即中间内容区）宽度小于采用了负边距100%的边栏时，负边距100%失效，不再使其能移动到上一行</li>
+                <li>不信你试试 = = ！</li>
+                <li>比较蠢的解决方案就是给container加上一个最小宽度，强制避免窗口宽度过小的问题。</li>
+            </ul>
+        </div>
+        <aside class="team-intro fl">
+            <img class="fl" src="http://img2.imgtn.bdimg.com/it/u=3002311528,3131912678&fm=21&gp=0.jpg" alt="teamlogo" />
+            <h5>Kyle的前端小组</h5>
+        </aside>
+        <aside class="team-member fr">
+            <ul>
+                <li>
+                    <img class="logo" src="http://img5.imgtn.bdimg.com/it/u=1416079565,2291752836&fm=21&gp=0.jpg" alt="member1" />
+                </li>
+                <li>
+                    <img class="logo" src="http://img5.imgtn.bdimg.com/it/u=4294760507,3104392006&fm=21&gp=0.jpg" alt="member2" />
+                </li>
+                <li>
+                    <img class="logo" src="http://img2.dwstatic.com/ow/1602/319807104480/319807315733.png" alt="member3" />
+                </li>
+                <li>
+                    <img class="lastlogo" src="http://img0.imgtn.bdimg.com/it/u=1558213686,2394121530&fm=21&gp=0.jpg" alt="member3" />
+                </li>
+            </ul>
+        </aside>
+    </div>
+</body>
+
+</html>

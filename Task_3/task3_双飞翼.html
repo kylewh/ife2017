@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .clearfix::after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .container {
+            margin: 20px;
+            min-width: 600px;
+        }
+        
+        .container,
+        .team-intro,
+        .team-member,
+        .main {
+            background: #eee;
+            border: 1px solid #999;
+        }
+        
+        .container,
+        .team-intro,
+        .team-member,
+        .main {
+            padding: 20px;
+        }
+        
+        .main-wrapper {
+            width: 100%;
+        }
+        
+        .main-wrapper>.main {
+            margin-left: 240px;
+            margin-right: 160px;
+        }
+        
+        .team-intro {
+            width: 200px;
+            margin-left: -100%;
+        }
+        
+        .team-intro img {
+            width: 80px;
+            margin-right: 20px;
+        }
+        
+        .team-intro h5 {
+            margin: 0;
+        }
+        
+        .team-member {
+            width: 122px;
+            margin-left: -122px;
+        }
+        
+        .team-member li {
+            margin-bottom: 20px;
+            height: 80px;
+        }
+        
+        .team-member li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .team-member li img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="main-wrapper fl">
+            <div class="main">
+                <header>
+                    <h3>团队介绍</h3>
+                </header>
+                <p>这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...</p>
+                <p>双飞翼布局解决了圣杯布局当窗口宽度小于右边栏（负边距100%）宽度时的布局失效的问题</p>
+                <p>解决方案是给中间主要内容区再加上一个wrapper，并使其宽度100%于父容器，这样保证了wrapper的宽度一定大于边栏宽度</p>
+                <p>因为 width of main-wrapper = width of container, container包含aside</p>
+                <p>如此一来边栏参照一个宽度永远比自己要宽的父容器，就不会出现负边距100%失效的问题。</p>
+                <p>其他区别： 主内容采用左右margin，左右两侧边栏不再需要相对定位的位移。</p>
+            </div>
+        </div>
+        <aside class="team-intro fl">
+            <img class="fl" src="http://img2.imgtn.bdimg.com/it/u=3002311528,3131912678&fm=21&gp=0.jpg" alt="teamlogo" />
+            <h5>Kyle的前端小组</h5>
+        </aside>
+        <aside class="team-member fr">
+            <ul>
+                <li>
+                    <img class="logo" src="http://img5.imgtn.bdimg.com/it/u=1416079565,2291752836&fm=21&gp=0.jpg" alt="member1" />
+                </li>
+                <li>
+                    <img class="logo" src="http://img5.imgtn.bdimg.com/it/u=4294760507,3104392006&fm=21&gp=0.jpg" alt="member2" />
+                </li>
+                <li>
+                    <img class="logo" src="http://img2.dwstatic.com/ow/1602/319807104480/319807315733.png" alt="member3" />
+                </li>
+                <li>
+                    <img class="lastlogo" src="http://img0.imgtn.bdimg.com/it/u=1558213686,2394121530&fm=21&gp=0.jpg" alt="member3" />
+                </li>
+            </ul>
+        </aside>
+    </div>
+</body>
+
+</html>

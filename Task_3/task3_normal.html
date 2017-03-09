@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        .clearfix::after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .container {
+            margin: 20px;
+            min-width: 600px;
+        }
+        
+        .container,
+        .team-intro,
+        .team-member,
+        .main {
+            background: #eee;
+            border: 1px solid #999;
+            padding: 20px;
+        }
+        
+        .team-intro {
+            width: 200px;
+        }
+        
+        .team-intro img {
+            width: 80px;
+            margin-right: 20px;
+        }
+        
+        .team-intro h5 {
+            margin: 0;
+        }
+        
+        .team-member {
+            width: 122px;
+        }
+        
+        .team-member li {
+            margin-bottom: 20px;
+            height: 80px;
+        }
+        
+        .team-member li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .team-member li img {
+            width: 100%;
+        }
+        
+        .main {
+            margin-left: 220px;
+            margin-right: 140px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <aside class="team-intro fl">
+            <img class="fl" src="http://img2.imgtn.bdimg.com/it/u=3002311528,3131912678&fm=21&gp=0.jpg" alt="teamlogo" />
+            <h5>Kyle的前端小组</h5>
+        </aside>
+        <aside class="team-member fr">
+            <ul>
+                <li>
+                    <img class="logo" src="http://img5.imgtn.bdimg.com/it/u=1416079565,2291752836&fm=21&gp=0.jpg" alt="member1" />
+                </li>
+                <li>
+                    <img class="logo" src="http://img5.imgtn.bdimg.com/it/u=4294760507,3104392006&fm=21&gp=0.jpg" alt="member2" />
+                </li>
+                <li>
+                    <img class="logo" src="http://img2.dwstatic.com/ow/1602/319807104480/319807315733.png" alt="member3" />
+                </li>
+                <li>
+                    <img class="lastlogo" src="http://img0.imgtn.bdimg.com/it/u=1558213686,2394121530&fm=21&gp=0.jpg" alt="member3" />
+                </li>
+            </ul>
+        </aside>
+        <div class="main">
+            <header>
+                <h3>团队介绍</h3>
+            </header>
+            <p>这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...这个组只有我一个人...</p>
+        </div>
+    </div>
+</body>
+
+</html>
