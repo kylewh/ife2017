@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .clearfix::after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .show {
+            opacity: 1;
+        }
+        
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .board {
+            margin: 0 auto;
+            width: 930px;
+            height: calc(100% - 30px);
+            background: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        .queue-ct {
+            height: 360px;
+            overflow: auto;
+            background: #f5f5f5;
+            border-radius: 3px;
+        }
+        
+        .queue-box {
+            font-size: 0;
+            box-sizing: border-box;
+        }
+        
+        .queue-item {
+            display: inline-block;
+            text-align: center;
+            line-height: 80px;
+            font-size: 30px;
+            margin: 0 10px 10px 0;
+            width: 80px;
+            border-radius: 5px;
+            color: white;
+            background: #42a5f5;
+            box-shadow: 1px 1px 3px 0px #0d47a1;
+            cursor: pointer;
+            transition: 0.5s opacity;
+            opacity: 0;
+        }
+        
+        .queue-item:first-child {
+            background: #4caf50;
+            box-shadow: 1px 1px 3px 0px #1b5e20;
+            ;
+        }
+        
+        .queue-item:last-child {
+            background: #ec407a;
+            box-shadow: 1px 1px 3px 0px #880e4f;
+        }
+        
+        .queue-item:nth-child(10n+1) {
+            margin-left: 10px;
+        }
+        
+        .queue-item:hover {
+            background: #ffc721;
+            box-shadow: 1px 1px 3px 0px #86766b;
+        }
+        
+        .queue-panel {
+            box-sizing: border-box;
+            padding: 50px;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        
+        .queue-input {
+            font-size: 30px;
+            width: 70%;
+            outline: none;
+            border: 1px solid transparent;
+            padding: 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+            transition: 0.5s all;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .queue-input:hover {
+            border: 1px solid #15cea3;
+            box-shadow: 0 2px 2px 0 #fff, 0 0 0 1px #fff;
+        }
+        
+        .queue-input:focus {
+            border: 1px solid #15cea3;
+            box-shadow: 0 2px 2px 0 #fff, 0 0 0 1px #fff;
+        }
+        
+        .queue-btn {
+            outline: none;
+            border: none;
+        }
+        
+        .queue-btn {
+            -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+            background: -moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: -webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: -o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: -ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+            background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf', GradientType=0);
+            background-color: #ededed;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            border: 1px solid #dcdcdc;
+            display: inline-block;
+            cursor: pointer;
+            color: #777777;
+            font-family: Arial;
+            font-size: 20px;
+            font-weight: bold;
+            font-style: italic;
+            padding: 20px 45px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #ffffff;
+            display: block;
+            width: 250px;
+            margin: 10px 0;
+        }
+        
+        .queue-btn:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+            background: -moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+            background: -webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+            background: -o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+            background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+            background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed', GradientType=0);
+            background-color: #dfdfdf;
+        }
+        
+        .queue-btn:active {
+            position: relative;
+            top: 1px;
+        }
+        
+        .queue-panel>.btns {
+            width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pop {
+            text-align: center;
+            line-height: 2.5;
+            width: 300px;
+            background: #4db6ac;
+            border-radius: 2px;
+            color: #fff;
+            display: none;
+            transition: 1s all;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board">
+        <div class="queue-ct">
+            <ul class="queue-box">
+            </ul>
+        </div>
+        <div class="queue-panel">
+            <input class="queue-input" type="text" placeholder="数字以英文','进行分隔，暂不支持输入检测">
+            <ul class="btns clearfix">
+                <li class="left-btns fl">
+                    <button class="queue-btn left-in">Left In</button>
+                    <button class="queue-btn left-out">Left Out</button>
+                </li>
+                <li class="right-btns fr">
+                    <button class="queue-btn right-in">Right In</button>
+                    <button class="queue-btn right-out">Right Out</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        (function () {
+            function MockQuene() {
+                var _this = this;
+                this.flashQueue = [];
+                this.start = true;
+                this.watch();
+                this.bind();
+            };
+
+            //暂时写出如此粗暴丑陋的队列监控 
+            //已经去看过了jQuery的队列监控源码
+            //在这个小project里感觉加上这个会太笨重了
+            //后面寻求办法继续改进队列管理和动画逻辑
+            //@TODO： code refactor 
+            MockQuene.prototype.watch = function () {
+                var _this = this;
+                this.watcher = setInterval(function () {
+                    if (_this.flashQueue.length > 0 && _this.start) {
+                        console.log('执行队列');
+                        _this.flashQueue.shift()();
+                        _this.start = false;
+                    }
+                }, 16);
+            };
+
+            //将所有需要用到的UI元素添加至view对象进行缓存
+            MockQuene.prototype.view = {
+                box: document.getElementsByClassName('queue-box')[0],
+                items: document.getElementsByClassName('queue-item'),
+                input: document.getElementsByClassName('queue-input')[0],
+                btns: {
+                    left: { in: document.getElementsByClassName('left-in')[0],
+                        out: document.getElementsByClassName('left-out')[0]
+                    },
+                    right: { in: document.getElementsByClassName('right-in')[0],
+                        out: document.getElementsByClassName('right-out')[0]
+                    }
+                }
+            };
+
+            MockQuene.prototype.render = function (data, dir) {
+                if (data.length === 0) {
+                    console.log('no more data in cache');
+                    return;
+                }
+                var _this = this,
+                    tempData = data,
+                    li = document.createElement('li');
+                li.className = 'queue-item';
+                li.innerText = tempData.shift();
+                //dir控制添加在队首还是队尾
+                setTimeout(function () {
+                    if (dir) {
+                        _this.view.box.appendChild(li);
+                    } else {
+                        _this.view.box.insertBefore(li, _this.view.items[0] || null);
+                    }
+                    setTimeout(function () {
+                        _this.render(tempData, dir || false);
+                        setTimeout(function () {
+                            li.style.opacity = 1;
+                        }, 300);
+                    }, 500);
+                }, 0);
+            };
+            //渐现
+            MockQuene.prototype.fadeIn = function (ele, interval) {
+                var _this = this;
+                this.star = false;
+                this.flashQueue.push(function () {
+                    ele.style.display = 'block';
+                    setTimeout(function () {
+                        ele.style.opacity = 1;
+                        setTimeout(function () {
+                            _this.start = true;
+                        }, interval);
+                    }, 100);
+                });
+                return this;
+            };
+            //渐隐
+            MockQuene.prototype.fadeOut = function (ele, interval) {
+                var _this = this;
+                this.flashQueue.push(function () {
+                    setTimeout(function () {
+                        ele.style.display = 'none';
+                        ele.style.opacity = 0;
+                        _this.start = true;
+                    }, interval);
+                });
+                return this;
+            };
+
+            MockQuene.prototype.pop = function (num) {
+                var _this = this;
+                if (this.popLayer) {
+                    this.popLayer.innerHTML = `<p>${num}被剔出了队列</p>`;
+                } else {
+                    this.popLayer = document.createElement('div');
+                    this.popLayer.className = 'pop center';
+                    this.popLayer.innerHTML = `<p>${num}被剔出了队列</p>`
+                    document.body.appendChild(this.popLayer);
+                }
+                this.fadeIn(this.popLayer, 1000).fadeOut(this.popLayer, 1000);
+            };
+
+            MockQuene.prototype.bind = function () {
+                var _this = this;
+                document.addEventListener('click', function (e) {
+                    var className = e.target.className;
+                    //操作按钮绑定事件
+                    //可以用html5 classList.contains()
+                    if (className.indexOf('queue-btn') > -1) {
+                        if (_this.view.input.value) {
+                            //转化为Number类型
+                            _this.cacheData = _this.view.input.value.split(',').map(num => (num - 0))
+                            _this.view.input.value = '';
+                            //加入按钮绑定事件
+                            if (className.indexOf('in') > -1) {
+                                var dir = className.indexOf('left') > -1 ? false : true;
+                                _this.render(_this.cacheData, dir);
+                                //书到用时方恨少, 我还不是很会写动画异步序列，恶补之。
+                            }
+                        }
+                        //移除按钮绑定事件
+                        if (className.indexOf('out') > -1) {
+                            if (_this.view.items.length <= 0) {
+                                return;
+                            }
+                            var idx = className.indexOf('left') > -1 ? 0 : _this.view.items.length - 1;
+                            _this.view.items[idx].style.opacity = '0';
+                            setTimeout(function () {
+                                _this.view.box.removeChild(_this.view.items[idx]);
+                            }, 500);
+                        }
+                    }
+                    //队列item绑定事件
+                    if (className === 'queue-item') {
+                        e.target.style.opacity = '0';
+                        setTimeout(function () {
+                            _this.view.box.removeChild(e.target);
+                        }, 500)
+                    }
+                });
+                //移除队列item时触发提示
+                //note: 不能绑定在document上，因为提示层display:none时也算被移出dom
+                this.view.box.addEventListener('DOMNodeRemoved', function (e) {
+                    _this.pop(e.target.innerText);
+                })
+            }
+            let test = new MockQuene();
+        })();
+    </script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>IFE JavaScript Task 01</title>
+    <title>IFE JavaScript Task 03</title>
     <style>
         html,
         body {
@@ -38,13 +38,6 @@
             font-size: 0;
             min-width: 700px;
         }
-        /*.layout::before {
-            content: ' ';
-            display: inline-block;
-            height: 100%;
-            vertical-align: middle;
-            visibility: hidden;
-        }*/
         
         ul {
             text-align: center;
@@ -58,6 +51,10 @@
             padding: 40px;
             font-size: 16px;
             list-style: none;
+        }
+
+        ul > li {
+            line-height: 2;
         }
         
         #source {
@@ -93,6 +90,14 @@
             width: 100px;
             line-height: 2;
             cursor: pointer;
+        }
+
+        .rank {
+            font-size: 15px;
+        }
+
+        .alert {
+            color: #e91e63;
         }
     </style>
 </head>
@@ -141,13 +146,11 @@
             //本来想把函数写的更抽象的一些，发现这个情况下貌似都很“反抽象”啊...只能面向具体字符串情况编写了。
             function getData() {
                 var container = document.querySelectorAll('#source>li');
-                var tempArr = [].slice.call(container).map(ele => {
+                return [].slice.call(container).map(ele => {
                     var temp = ele.innerText.split('：');
                     temp[0] = temp[0].slice(0, temp[0].indexOf('空气质量'));
                     return temp;
-                }).sort((a, b) => (b[1] - 0) - (a[1] - 0));
-
-                return tempArr;
+                });
             }
 
             /**
@@ -156,7 +159,7 @@
              * 返回一个排序后的数组
              */
             function sortAqiData(data) {
-                return data.sort((a, b) => (b[1] - 0) - (a[1] - 0));
+                return data.sort((a, b) => (b[1] - 0) - (a[1] - 0))
             }
 
             /**
@@ -166,10 +169,18 @@
              */
 
             function render(data) {
-                console.log(data);
                 var placeHolder = document.getElementById('resort');
-                placeHolder.innerHTML = data.map(singleData =>
-                    `<li>${singleData[0]}空气质量：<b>${singleData[1]}</b></li>`).join('');
+                placeHolder.innerHTML = data.map((singleData, idx) => {
+                    var rank, alert;
+                    var aRank = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+                    alert = idx <= 2 ? 'alert' : '';
+                    if (idx < 10) {
+                        rank = aRank[idx]
+                    } else if (idx >= 10) {
+                        //...数字转汉字的逻辑暂时不做...一脸懵逼 - - ！
+                    }
+                    return `<li class="${alert}"><span class="rank">第${rank}名： </span>${singleData[0]}空气质量：<b>${singleData[1]}</b></li>`
+                }).join('');
             }
 
             function btnHandle() {
